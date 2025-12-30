@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 const navLinks = [
@@ -33,13 +34,12 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--gold-light)] to-[var(--gold-dark)] flex items-center justify-center">
-              <span className="text-[#0a0a0f] font-bold text-xl">PM</span>
-            </div>
-            <div className="hidden sm:block">
-              <span className="text-xl font-bold text-gradient-gold">Palin & Martins</span>
-              <span className="block text-xs text-[var(--text-muted)]">Grupo Empresarial</span>
-            </div>
+            <Image
+              src="/images/Logo_Palin_e_Martins.png"
+              alt="Palin & Martins"
+              width={200}
+              height={50}
+            />
           </Link>
 
           {/* Desktop Navigation */}

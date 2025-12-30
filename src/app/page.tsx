@@ -19,9 +19,10 @@ const services = [
     ),
     title: 'IntegraMente',
     description: 'O IntegraMente revela o que o currículo não mostra. Testes psicológicos validados que ajudam a posicionar cada colaborador no lugar certo, com consciência, desempenho e alinhamento à cultura da empresa.',
-    href: '/servicos#integramente',
+    href: 'https://integramentegpm.com.br/',
     features: ['Testes Psicológicos', 'Cultura Organizacional', 'RH Estratégico'],
     isImage: true,
+    external: true,
   },
   {
     icon: (
@@ -29,9 +30,10 @@ const services = [
     ),
     title: 'Stream',
     description: 'Aprenda com os melhores especialistas em contabilidade. Plataforma de educação do Palin & Martins.',
-    href: '/servicos#stream',
+    href: 'http://143.198.75.253',
     features: ['Cursos Online', 'Especialistas', 'Certificados'],
     isImage: true,
+    external: true,
   },
 ];
 
@@ -144,10 +146,15 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <Link
+            {services.map((service) => {
+              const CardWrapper = service.external ? 'a' : Link;
+              const cardProps = service.external
+                ? { href: service.href, target: '_blank', rel: 'noopener noreferrer' }
+                : { href: service.href };
+              return (
+              <CardWrapper
                 key={service.title}
-                href={service.href}
+                {...cardProps}
                 className="group bg-[var(--dark-card)] border border-[var(--dark-border)] rounded-2xl p-8 card-hover relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[var(--gold)]/10 to-transparent rounded-bl-full" />
@@ -184,8 +191,9 @@ export default function Home() {
                     </svg>
                   </span>
                 </div>
-              </Link>
-            ))}
+              </CardWrapper>
+            );
+            })}
           </div>
         </div>
       </section>
